@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="Ora6ft2cL2SmZJywSyczsuvonUngBzGaqV7rtI1G">
+    <title>Wildberries</title>
+
+    <link rel="icon" href="images/favic.ico"/>
+
+
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="header">
+    <div class="header__left">
+        <button class="expand-btn"></button>
+        <a href="#" class="main-logo">
+            <img src="./images/main-logo.svg" alt="main-logo">
+        </a>
+    </div>
+
+    <form class="product-search-block">
+        <input type="text" placeholder="Поиск по товарам">
+        <button class="product-search-block__upload-btn"></button>
+    </form>
+
+    <ul class="user-section header__right">
+        <li class="user-section__item">
+            <a href="#"><img src="./images/icons/user-icon.svg" alt="Иконка юзера"></a>
+        </li>
+        <li class="user-section__item">
+            <a href="#"><img src="./images/icons/basket-icon.svg" alt="Иконка карзины"></a>
+        </li>
+    </ul>
+</div>
+<div class="content block-centered">
+    <div class="container">
+        <div class="main-form">
+            <h1>
+                Активируйте промокод на дополнительную скидку по номеру телефонa
+            </h1>
+
+            <form class="form js-zayavka">
+                <input type="tel" name="phone" autocomplete="on" class="input phone-mask" placeholder="Введите номер телефона*"/>
+
+                <button type="submit" class="btn">Активировать промокод</button>
+            </form>
+
+            <a href="#" class="link-to">Перейти в магазин</a>
+        </div>
+
+        <ul class="photo-gallery">
+            <li class="photo-gallery__item"
+                style="background-image: url('./images/gallery-items/gallery-item--1.png')"
+            ></li>
+            <li class="photo-gallery__item"
+                style="background-image: url('./images/gallery-items/gallery-item--2.png')"
+            ></li>
+            <li class="photo-gallery__item"
+                style="background-image: url('./images/gallery-items/gallery-item--3.png')"
+            ></li>
+        </ul>
+
+        <a href="#" class="link-to link-to--color-purple link-to--dotted">Смотреть всё</a>
+    </div>
+</div>
+
+<div class="modal-view block-centered">
+    <div class="modal-view-content">
+        <h1>Для перехода в меню сайта, активируйте промокод, оставив номер телефона</h1>
+
+        <form class="form js-zayavka">
+            <input type="tel" name="phone" required="true" class="input phone-mask"
+                   placeholder="Введите номер телефона*">
+
+            <button class="btn">
+                Активировать промокод
+            </button>
+
+            <a type="button" class="link-to link-to--color-purple js-feedback-toggle">
+                Закрыть
+            </a>
+        </form>
+    </div>
+</div>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/app.js?v=1.0"></script>
+</body>
+</html>
