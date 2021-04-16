@@ -1,7 +1,3 @@
-:root {
-    --main-color: #0d89a4;
-}
-
 html, body {
     height: 100%;
 }
@@ -14,12 +10,27 @@ body {
 
 input {
     font-variant-numeric: lining-nums;
+    outline: none;
 }
 
 ul {
     list-style: none;
     margin: 0;
     padding: 0
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;;
+}
+
+.wrapper.modal-view--open .main-content{
+    display: none;
+}
+
+.wrapper.modal-view--open .footer{
+    display: block;
 }
 
 .link-to {
@@ -32,30 +43,46 @@ ul {
     text-decoration: underline;
     margin-top: 14px;
     display: block;
+    cursor: pointer;
+    transition: opacity 200ms ease-in-out;
+    will-change: opacity;
+}
+
+.link-to:hover {
+    opacity: .8;
 }
 
 .link-to--dotted {
     display: inline-block;
-    border-bottom: 1px dashed #af52de;
     text-decoration: none;
     font-weight: 800;
+    position: relative;
+}
+
+.link-to--dotted:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    background-image: url("../images/icons/Line.svg");
+    width: 100%;
+    height: 2px;
 }
 
 .link-to--color-purple {
     color: #af52de;
 }
 
-.block-centered {
-    max-width: 400px;
-    margin: 0 auto;
+.header, .footer {
+    flex-shrink: 0;
 }
 
 .content {
+    flex-grow: 1;
     margin: 15px auto;
-}
-
-.content.modal-view--open {
-    display: none;
+    max-width: 400px;
 }
 
 .container {
@@ -64,6 +91,7 @@ ul {
 }
 
 .header {
+    flex-shrink: 0;
     background-color: #481173;
     display: flex;
     justify-content: space-between;
@@ -118,20 +146,6 @@ ul {
     opacity: .8;
 }
 
-.footer {
-    text-align: center;
-    color: #8d4646;
-    font-size: 7px;
-    line-height: 10px;
-    margin: 10px 0;
-}
-
-.footer a {
-    margin-top: 10px;
-    color: inherit;
-    text-decoration: underline;
-}
-
 .main-logo {
     display: inline-flex;
     z-index: 1;
@@ -142,6 +156,8 @@ ul {
     width: 22px;
     height: 17px;
     background: transparent url("../images/icons/hamburger-icon.svg") center no-repeat;
+    background-size: 22px 17px;
+    cursor: pointer;
 }
 
 .expand-btn--active {
@@ -265,7 +281,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 24px 16px 10px;
+    padding: 24px 16px;
     background-image: linear-gradient(to right, #ff52bd 0%, #ff425d 100%);
     border-radius: 8px;
 }
@@ -277,6 +293,7 @@ ul {
 }
 
 .form {
+    width: 100%;
     max-width: 400px;
     margin-top: 20px;
 }
@@ -295,6 +312,14 @@ ul {
     background-repeat: no-repeat;
 }
 
+.form__input-field {
+    position: relative;
+}
+
+.form .input.error {
+    border: 1px solid red;
+}
+
 .form .input:-webkit-autofill {
     text-align: center;
     padding-left: 0;
@@ -307,7 +332,7 @@ ul {
 
 .form input::placeholder {
     color: #af52de;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     letter-spacing: normal;
     line-height: 24px;
@@ -316,7 +341,7 @@ ul {
 
 .form input:-ms-input-placeholder {
     color: #af52de;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     letter-spacing: normal;
     line-height: 24px;
@@ -325,7 +350,7 @@ ul {
 
 .form input::-ms-input-placeholder {
     color: #af52de;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     letter-spacing: normal;
     line-height: 24px;
@@ -334,7 +359,7 @@ ul {
 
 .form .btn {
     height: 40px;
-    margin-top: 16px;
+    margin-top: 15px;
     border: none;
     width: 100%;
     color: #fff;
@@ -344,17 +369,8 @@ ul {
     border-radius: 6px;
     position: relative;
     overflow: hidden;
-    will-change: background-color;
-    transition: background-color 300ms ease-in-out;
-}
-
-.form .btn:hover {
-    cursor: pointer;
-    opacity: .8;
-}
-
-.form .btn:hover:after {
-    left: 120%;
+    will-change: background-color, opacity;
+    transition: background-color 200ms ease-in-out, opacity 200ms ease-in-out;
 }
 
 .form .btn:after {
@@ -378,12 +394,24 @@ ul {
     animation-iteration-count: infinite;
 }
 
+
+.form .btn:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.form .btn:hover:after {
+    left: 120%;
+}
+
 .modal-view {
     display: none;
     padding: .9rem;
     width: 100%;
     background: #fff;
-    margin-top: 55px;
+    margin: 45px auto;
+    max-width: 400px;
+    position: relative;
 }
 
 .modal-view.modal-view--open {
@@ -419,6 +447,19 @@ ul {
     margin-bottom: 35px;
 }
 
+.footer {
+    display: none;
+    max-width: 400px;
+    margin: 0 auto 8px;
+    color: #736d6d;
+    font-family: "Helvetica", sans-serif;
+    font-size: 8px;
+    letter-spacing: -0.2px;
+}
+
+.modal-view .form {
+    margin-bottom: 20px;
+}
 
 .modal-view .form .input {
     height: 48px;
@@ -451,6 +492,10 @@ ul {
     height: 48px;
 }
 
+.modal-view .link-to {
+    margin-top: 23px;
+}
+
 .success-block {
     width: 100%;
     margin: 90px 0;
@@ -474,6 +519,26 @@ ul {
     line-height: 30px;
     margin-top: 13px;
     letter-spacing: -0.2px;
+}
+
+.error_wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 25.875rem;
+}
+
+.error_alert {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: red;
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    right: .5rem;
+    top: -.4rem;
+    padding: 3px;
+    line-height: 8px;
+    border-radius: 1px;
 }
 
 @media (min-width: 480px) {

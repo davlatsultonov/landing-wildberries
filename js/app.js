@@ -2,12 +2,10 @@ $(function () {
     $('.expand-btn, .js-feedback-toggle').click(function (e) {
         e.preventDefault();
 
-        if ($(e.target).has('expand-btn')) {
-            $(e.target).toggleClass('expand-btn--active')
-        }
+        $('.expand-btn, .js-feedback-toggle').toggleClass('expand-btn--active')
 
         $('.modal-view').toggleClass('modal-view--open');
-        $('.content').toggleClass('modal-view--open');
+        $('.wrapper').toggleClass('modal-view--open');
     });
 
     let isValidMask = false;

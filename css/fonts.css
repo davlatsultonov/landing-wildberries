@@ -1,4 +1,10 @@
 @font-face {
+    font-family: 'Helvetica';
+    font-weight: 400;
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Roman.ttf) format("truetype");
+}
+
+@font-face {
     font-family: 'Raleway';
     font-weight: 400;
     src: url(../fonts/raleway/Raleway-Regular.woff) format('woff');
